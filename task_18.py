@@ -11,10 +11,14 @@ N = int(input("Введите количество элементов: "))
 count = 0
 A = [random.randint(0, 10) for item in range(N)]
 print(A)
-X = int(input("Введите число: ")) 
-for i in range(N):     
+A.sort()
+X = int(input("Введите сравниваемое число: ")) 
+min = abs(X - A[0])
+for i in range(len(A)-1):
     if A[i] == X:
-        print(A[i])
-    elif A[i] == X + 1 or A[i] == X - 1:
-        print(A[i])
-        break
+        print(A[i]) 
+        break 
+    elif min >= abs(X - A[i+1]):
+        min = abs(X - A[i+1])
+        count +=1
+print(A[count])
